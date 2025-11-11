@@ -31,6 +31,7 @@ const config = {
 	pagesDir: './content/pages',
 	templatesDir: './templates',
 	publicDir: './public',
+	iconsDir: './icons',
 	siteTitle: 'My Portfolio',
 	siteUrl: 'https://example.com',
 };
@@ -454,7 +455,7 @@ function generateHomepage(posts, pages, navigation) {
     <!-- CTA Section -->
     <section class="bg-gradient-to-r from-gray-900 via-gray-800 to-gray-900 text-white">
       <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 md:py-24 text-center">
-        <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 leading-tight">Ready to Start a Project?</h2>
+        <h2 class="text-2xl text-gray-300 sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-6 leading-tight">Ready to Start a Project?</h2>
         <p class="text-base sm:text-lg md:text-xl text-gray-300 mb-6 sm:mb-8">
           Let's work together to bring your ideas to life
         </p>
@@ -807,6 +808,29 @@ function generateCategoryPage(category, posts, navigation) {
 	return html;
 }
 
+/**
+ * Generate icons into public folder
+ */
+function generateIconsFolder() {
+  return new Promise((resolve, reject) => {
+    const sourceFolder = config.iconsDir
+    const destFolder = path.join(config.publicDir, "icons");
+
+    fs.cp(sourceFolder, destFolder, {
+      recursive: true,
+      force: true
+    }, (err) => {
+      if (err) {
+        console.error('Error copying icons:', err);
+        reject(err);
+      } else {
+        console.log('Icons folder copied recursively!');
+        resolve();
+      }
+    });
+  });
+}
+
 // ============================================
 // MAIN BUILD FUNCTION
 // ============================================
@@ -814,11 +838,14 @@ function generateCategoryPage(category, posts, navigation) {
 /**
  * Main build function
  */
-function build() {
+async function build() {
 	console.log('🚀 Starting build...\n');
 
 	// Ensure output directory exists
 	ensureDir(config.publicDir);
+
+	// Copy and paste icons into public
+	await generateIconsFolder();
 
 	// Load content
 	console.log('📖 Loading content...');
@@ -906,13 +933,15 @@ function build() {
 // ============================================
 
 if (require.main === module) {
-	try {
-		build();
-	} catch (error) {
-		console.error('❌ Build failed:', error.message);
-		console.error(error.stack);
-		process.exit(1);
-	}
+	(async () => {
+		try {
+			await build();
+		} catch (error) {
+			console.error('❌ Build failed:', error.message);
+			console.error(error.stack);
+			process.exit(1);
+		}
+	})()
 }
 
 module.exports = { build, loadPosts, loadPages, renderTemplate };

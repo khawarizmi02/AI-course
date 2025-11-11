@@ -48,7 +48,8 @@
   }
 
   /* Lists */
-  ul, ol {
+  ul,
+  ol {
     @apply ml-6 mb-4;
   }
 
@@ -74,7 +75,8 @@
     @apply w-full border-collapse mb-4;
   }
 
-  th, td {
+  th,
+  td {
     @apply border border-gray-300 px-4 py-2 text-left;
   }
 
