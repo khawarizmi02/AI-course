@@ -1,0 +1,33 @@
+{
+  "name": "portfolio-static-site-generator",
+  "version": "1.0.0",
+  "description": "A static site generator for portfolio and blogging website",
+  "main": "src/generator.js",
+  "scripts": {
+    "build": "node src/generator.js",
+    "serve": "http-server public -p 8080 -o",
+    "dev": "nodemon src/generator.js --watch content --watch templates",
+    "clean": "rimraf public/*"
+  },
+  "keywords": [
+    "static-site-generator",
+    "portfolio",
+    "blog",
+    "markdown"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^11.1.1",
+    "highlight.js": "^11.8.0",
+    "tailwindcss": "^3.3.6"
+  },
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "nodemon": "^3.0.1",
+    "postcss": "^8.4.31",
+    "postcss-cli": "^10.1.0",
+    "rimraf": "^5.0.5"
+  }
+}
