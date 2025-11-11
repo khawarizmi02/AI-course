@@ -1,0 +1,408 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================ */
+/* CUSTOM BASE STYLES */
+/* ============================================ */
+
+@layer base {
+  /* Typography */
+  h1 {
+    @apply text-5xl md:text-6xl font-bold text-gray-900 mb-6 mt-8;
+  }
+
+  h2 {
+    @apply text-4xl font-bold text-gray-900 mb-4 mt-6;
+  }
+
+  h3 {
+    @apply text-2xl font-bold text-gray-800 mb-3 mt-4;
+  }
+
+  h4 {
+    @apply text-xl font-bold text-gray-800 mb-2 mt-3;
+  }
+
+  p {
+    @apply text-gray-700 leading-relaxed mb-4;
+  }
+
+  a {
+    @apply text-blue-600 hover:text-blue-800 transition-colors;
+  }
+
+  /* Code blocks */
+  pre {
+    @apply bg-gray-900 text-gray-100 p-4 rounded-lg overflow-x-auto mb-4;
+    line-height: 1.5;
+  }
+
+  code {
+    @apply font-mono text-sm;
+  }
+
+  /* Inline code */
+  :not(pre) > code {
+    @apply bg-gray-100 text-gray-800 px-2 py-1 rounded font-mono text-sm;
+  }
+
+  /* Lists */
+  ul, ol {
+    @apply ml-6 mb-4;
+  }
+
+  li {
+    @apply mb-2;
+  }
+
+  ul li {
+    @apply list-disc;
+  }
+
+  ol li {
+    @apply list-decimal;
+  }
+
+  /* Blockquotes */
+  blockquote {
+    @apply border-l-4 border-blue-600 pl-4 italic text-gray-700 my-4;
+  }
+
+  /* Tables */
+  table {
+    @apply w-full border-collapse mb-4;
+  }
+
+  th, td {
+    @apply border border-gray-300 px-4 py-2 text-left;
+  }
+
+  th {
+    @apply bg-gray-100 font-bold text-gray-900;
+  }
+
+  tr:nth-child(even) {
+    @apply bg-gray-50;
+  }
+}
+
+/* ============================================ */
+/* COMPONENT STYLES */
+/* ============================================ */
+
+@layer components {
+  /* Card component */
+  .card {
+    @apply bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-shadow;
+  }
+
+  .card-header {
+    @apply p-6 border-b border-gray-100;
+  }
+
+  .card-body {
+    @apply p-6;
+  }
+
+  .card-footer {
+    @apply p-6 border-t border-gray-100;
+  }
+
+  /* Button styles */
+  .btn {
+    @apply inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-blue-600 border-2 border-blue-600 hover:bg-blue-50;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-gray-700 border-2 border-gray-300 hover:border-gray-400;
+  }
+
+  .btn-small {
+    @apply px-4 py-2 text-sm;
+  }
+
+  /* Badge styles */
+  .badge {
+    @apply inline-block px-3 py-1 rounded-full text-sm font-semibold;
+  }
+
+  .badge-primary {
+    @apply bg-blue-100 text-blue-800;
+  }
+
+  .badge-secondary {
+    @apply bg-gray-100 text-gray-800;
+  }
+
+  .badge-success {
+    @apply bg-green-100 text-green-800;
+  }
+
+  .badge-danger {
+    @apply bg-red-100 text-red-800;
+  }
+
+  .badge-warning {
+    @apply bg-yellow-100 text-yellow-800;
+  }
+
+  /* Input styles */
+  .input {
+    @apply w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+
+  /* Container */
+  .container-lg {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Section spacing */
+  .section {
+    @apply py-16 md:py-24;
+  }
+
+  .section-alt {
+    @apply py-12 md:py-20;
+  }
+
+  /* Link styles */
+  .link-reset {
+    @apply no-underline hover:underline;
+  }
+
+  .link-external::after {
+    content: " ↗";
+  }
+
+  /* Text utilities */
+  .text-truncate {
+    @apply overflow-hidden text-overflow-ellipsis whitespace-nowrap;
+  }
+
+  /* Grid utilities */
+  .grid-auto-fit {
+    @apply grid auto-cols-max gap-4;
+  }
+}
+
+/* ============================================ */
+/* UTILITY OVERRIDES */
+/* ============================================ */
+
+@layer utilities {
+  /* Custom spacing */
+  .gap-xs {
+    @apply gap-2;
+  }
+
+  .gap-sm {
+    @apply gap-4;
+  }
+
+  .gap-md {
+    @apply gap-6;
+  }
+
+  .gap-lg {
+    @apply gap-8;
+  }
+
+  /* Responsive utilities */
+  .hide-mobile {
+    @apply hidden md:block;
+  }
+
+  .show-mobile {
+    @apply block md:hidden;
+  }
+
+  .hide-tablet {
+    @apply hidden lg:block;
+  }
+
+  .show-tablet {
+    @apply hidden md:block lg:hidden;
+  }
+
+  .hide-desktop {
+    @apply lg:hidden;
+  }
+
+  .show-desktop {
+    @apply hidden lg:block;
+  }
+
+  /* Touch-friendly utilities */
+  .touch-safe {
+    @apply min-h-12 min-w-12;
+  }
+
+  .touch-safe-sm {
+    @apply min-h-10 min-w-10;
+  }
+
+  /* Mobile padding */
+  .px-mobile {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+
+  .py-mobile {
+    @apply py-4 sm:py-6 md:py-8;
+  }
+
+  /* Flexbox utilities */
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
+
+  .flex-between {
+    @apply flex items-center justify-between;
+  }
+
+  .flex-col-mobile {
+    @apply flex flex-col sm:flex-row;
+  }
+
+  .flex-col-tablet {
+    @apply flex flex-col md:flex-row;
+  }
+
+  /* Gradient utilities */
+  .gradient-primary {
+    @apply bg-gradient-to-r from-blue-600 to-purple-600;
+  }
+
+  .gradient-warm {
+    @apply bg-gradient-to-br from-orange-400 via-red-500 to-pink-500;
+  }
+
+  .gradient-cool {
+    @apply bg-gradient-to-br from-blue-400 via-purple-400 to-pink-400;
+  }
+
+  /* Container utilities */
+  .container-mobile {
+    @apply px-4 sm:px-6 md:px-8;
+  }
+
+  .container-safe {
+    @apply max-w-6xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Text utilities for mobile */
+  .text-responsive {
+    @apply text-sm sm:text-base md:text-lg;
+  }
+
+  .text-heading-responsive {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+
+  /* Grid responsive */
+  .grid-auto {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+
+  .grid-auto-sm {
+    @apply grid grid-cols-1 md:grid-cols-2;
+  }
+
+  /* Margin utilities */
+  .mx-mobile {
+    @apply mx-2 sm:mx-4 md:mx-6;
+  }
+
+  /* Safe area padding (for notch devices) */
+  .safe-top {
+    @apply pt-2 sm:pt-4;
+  }
+
+  .safe-bottom {
+    @apply pb-2 sm:pb-4;
+  }
+}
+
+/* ============================================ */
+/* RESPONSIVE TYPOGRAPHY */
+/* ============================================ */
+
+@screen sm {
+  h1 {
+    @apply text-4xl;
+  }
+
+  h2 {
+    @apply text-3xl;
+  }
+
+  h3 {
+    @apply text-xl;
+  }
+}
+
+@screen md {
+  h1 {
+    @apply text-5xl;
+  }
+
+  h2 {
+    @apply text-4xl;
+  }
+
+  h3 {
+    @apply text-2xl;
+  }
+}
+
+/* ============================================ */
+/* CODE HIGHLIGHTING - ATOM ONE DARK THEME */
+/* ============================================ */
+
+.hljs {
+  @apply bg-gray-900 text-gray-100 rounded-lg p-4;
+}
+
+.hljs-string {
+  @apply text-green-400;
+}
+
+.hljs-number {
+  @apply text-orange-400;
+}
+
+.hljs-literal {
+  @apply text-blue-400;
+}
+
+.hljs-attr {
+  @apply text-cyan-400;
+}
+
+.hljs-title {
+  @apply text-blue-300;
+}
+
+.hljs-built_in {
+  @apply text-purple-400;
+}
+
+.hljs-variable {
+  @apply text-red-400;
+}
+
+.hljs-keyword {
+  @apply text-purple-400;
+}
+
+.hljs-comment {
+  @apply text-gray-500;
+}
