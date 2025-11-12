@@ -539,8 +539,8 @@ function generateNavigationHtml(navigation) {
         <div class="flex justify-between items-center h-16">
           <!-- Logo/Brand -->
           <div class="flex-shrink-0">
-            <a href="/" class="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent hover:from-blue-700 hover:to-purple-700 transition-all duration-300">
-              Khawarizmi
+            <a href="/" class="flex items-center">
+              <img src="/icons/favicon-32x32.png" alt="Khawarizmi Logo" class="w-9 h-9 rounded-full border-2 border-gray-700 transition-transform duration-200 ease-out hover:scale-110 hover:shadow-lg">
             </a>
           </div>
 
@@ -812,23 +812,23 @@ function generateCategoryPage(category, posts, navigation) {
  * Generate icons into public folder
  */
 function generateIconsFolder() {
-  return new Promise((resolve, reject) => {
-    const sourceFolder = config.iconsDir
-    const destFolder = path.join(config.publicDir, "icons");
+	return new Promise((resolve, reject) => {
+		const sourceFolder = config.iconsDir
+		const destFolder = path.join(config.publicDir, "icons");
 
-    fs.cp(sourceFolder, destFolder, {
-      recursive: true,
-      force: true
-    }, (err) => {
-      if (err) {
-        console.error('Error copying icons:', err);
-        reject(err);
-      } else {
-        console.log('Icons folder copied recursively!');
-        resolve();
-      }
-    });
-  });
+		fs.cp(sourceFolder, destFolder, {
+			recursive: true,
+			force: true
+		}, (err) => {
+			if (err) {
+				console.error('Error copying icons:', err);
+				reject(err);
+			} else {
+				console.log('Icons folder copied recursively!');
+				resolve();
+			}
+		});
+	});
 }
 
 // ============================================
